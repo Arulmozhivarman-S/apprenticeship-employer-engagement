@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+  }
+
+  /* One consistent, high-contrast focus style for every interactive element. */
+  :focus-visible {
+    outline: 3px solid #2e66d1;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .on-navy :focus-visible {
+    outline-color: #9bbcf3;
+  }
+
+  /* Sticky nav is ~4.5rem tall; anchored sections stop below it. */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+
+  /* Spinner arrows collide with the unit labels and add little on desktop. */
+  input[type='number'] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  .section-title {
+    @apply text-3xl font-semibold tracking-tight text-ink sm:text-4xl;
+    text-wrap: balance;
+  }
+
+  .field-input {
+    @apply block w-full rounded-md border border-line bg-white px-3 py-2.5 text-base text-ink
+      shadow-[inset_0_1px_0_rgba(20,33,58,0.03)] transition-colors
+      placeholder:text-ink-muted/60 hover:border-navy-600/40
+      focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/25;
+  }
+
+  .field-input[aria-invalid='true'] {
+    @apply border-red-700 focus:border-red-700 focus:ring-red-700/20;
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
