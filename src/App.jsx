@@ -33,7 +33,7 @@ export default function App() {
       >
         Skip to main content
       </a>
-      <PrototypeBanner />
+      {/* <PrototypeBanner /> */}
       <Navbar />
       <main id="main">
         <Hero />
